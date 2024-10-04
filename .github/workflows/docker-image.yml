@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file docker/backend-server-rs.Dockerfile --tag backend-server-rs:$(date +%s)
+    - name: Run the docker image
+      run: docker run -d --name backend-server-rs -p 8080:8080 backend-server-rs
+           sleep 5
+    - name: Test HTTP request
+      run: |
+        curl -f -I http://127.0.0.1:8080 || exit 1
