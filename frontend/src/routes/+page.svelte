@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import store from '$lib/store.js';
-	import Message from './message.svelte';
+	import Message from './Message.svelte';
 	let message;
 	let messages = [];
 
