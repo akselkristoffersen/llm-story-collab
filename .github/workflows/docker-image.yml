@@ -23,8 +23,8 @@ jobs:
       run: docker build . --file docker/backend-server-rs.Dockerfile --tag backend-server-rs
     - name: Run the docker image
       run: docker run -d --name backend-server-rs -p 8080:8080 backend-server-rs
-    - name: Sleep until server is ready
-      run: sleep 5s
-    - name: Test HTTP request
+    # - name: Sleep until server is ready
+    #   run: sleep 5s
+    - name: Test WebSocket Connection
       run: |
         curl -H "Upgrade: websocket" -H "Connection: Upgrade" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" http://localhost:8080/ws || exit 1
