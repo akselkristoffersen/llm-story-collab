@@ -24,7 +24,7 @@ jobs:
     - name: Run the docker image
       run: docker run -d --name backend-server-rs -p 8080:8080 backend-server-rs
     - name: Sleep until server is ready
-      run: sleep 10s
+      run: sleep 5s
     - name: Test HTTP request
       run: |
         curl -f -I http://127.0.0.1:8080 || exit 1
