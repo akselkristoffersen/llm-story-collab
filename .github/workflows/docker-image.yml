@@ -14,7 +14,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
+    - name: Login to dockerhub
+      uses: docker/login-action@v3
+      with:
+       username: ${{ secrets.DOCKERHUB_USERNAME }}
+       password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build the docker image
       run: docker build . --file docker/backend-server-rs.Dockerfile --tag backend-server-rs:$(date +%s)
     - name: Run the docker image
       run: docker run -d --name backend-server-rs -p 8080:8080 backend-server-rs
