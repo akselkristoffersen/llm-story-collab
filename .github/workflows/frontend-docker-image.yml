@@ -22,7 +22,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file docker/frontend.Dockerfile --tag frontend
     - name: Run the docker image
-      run: docker run -d --name frontend -p 8000:3000 frontend
+      run: docker run -d --name frontend -p 8000:80 frontend
     - name: Wait until server is ready
       run: sleep 5s
     - name: Test Http Request
