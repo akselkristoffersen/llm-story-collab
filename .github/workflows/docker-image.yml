@@ -27,4 +27,4 @@ jobs:
       run: sleep 5s
     - name: Test HTTP request
       run: |
-        curl -f -I http://127.0.0.1:8080 || exit 1
+        curl -H "Upgrade: websocket" -H "Connection: Upgrade" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" http://localhost:8080/ws || exit 1
