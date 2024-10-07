@@ -23,7 +23,7 @@ jobs:
       run: docker build . --file docker/backend-server-rs.Dockerfile --tag backend-server-rs
     - name: Run the docker image
       run: docker run -d --name backend-server-rs -p 8080:8080 backend-server-rs
-           sleep 5
+           sleep 10s
     - name: Test HTTP request
       run: |
         curl -f -I http://127.0.0.1:8080 || exit 1
