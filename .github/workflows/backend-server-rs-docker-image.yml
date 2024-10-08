@@ -1,4 +1,4 @@
-name: Backend Docker Image CI
+name: Backend Rust Docker Image CI
 
 on:
   push:
