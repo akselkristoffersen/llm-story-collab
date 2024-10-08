@@ -23,6 +23,8 @@ jobs:
       run: docker build . --file docker/backend-server-py.Dockerfile --tag backend-server-py
     - name: Run the docker image
       run: docker run -d --name backend-server-py -p 8080:8080 backend-server-py
+    - name: Wait until server is ready
+      run: sleep 5s
     - name: Test WebSocket Connection
       run: |
-        curl -H "Upgrade: websocket" -H "Connection: Upgrade" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" ws://localhost:8080 || exit 1
+        curl -H "Upgrade: websocket" -H "Connection: Upgrade" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" http://localhost:8080/ws || exit 1
