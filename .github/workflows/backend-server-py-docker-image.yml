@@ -25,4 +25,4 @@ jobs:
       run: docker run -d --name backend-server-py -p 8080:8080 backend-server-py
     - name: Test WebSocket Connection
       run: |
-        curl -H "Upgrade: websocket" -H "Connection: Upgrade" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" http://localhost:8080/ws || exit 1
+        curl -H "Upgrade: websocket" -H "Connection: Upgrade" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" http://localhost:8080 || exit 1
