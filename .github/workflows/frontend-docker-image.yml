@@ -20,7 +20,7 @@ jobs:
        username: ${{ secrets.DOCKERHUB_USERNAME }}
        password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file docker/frontend.Dockerfile --tag frontend --build-arg VITE_API_URL=""
+      run: docker build . --file docker/frontend.Dockerfile --tag frontend --build-arg VITE_API_URL="ws://localhost"
     - name: Run the docker image
       run: docker run -d --name frontend -p 80:80 frontend
     - name: Wait until server is ready
