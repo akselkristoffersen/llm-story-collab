@@ -3,19 +3,19 @@ services:
     build:
       context: .
       dockerfile: ./docker/frontend.Dockerfile
+      args:
+        VITE_API_URL: ws://localhost:8082
     ports:
       - "80:80"
     networks:
       - webnet
-    depends_on:
-      - backend-server
 
   backend-server:
     build:
       context: .
       dockerfile: ./docker/backend-server-py.Dockerfile
     ports:
-      - "8080:8080"
+      - "8082:8080"
     networks:
       - webnet
 

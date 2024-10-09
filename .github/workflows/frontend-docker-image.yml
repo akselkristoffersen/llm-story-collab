@@ -20,12 +20,12 @@ jobs:
        username: ${{ secrets.DOCKERHUB_USERNAME }}
        password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file docker/frontend.Dockerfile --tag frontend
+      run: docker build . --file docker/frontend.Dockerfile --tag frontend --build-arg VITE_API_URL=""
     - name: Run the docker image
-      run: docker run -d --name frontend -p 8000:80 frontend
+      run: docker run -d --name frontend -p 80:80 frontend
     - name: Wait until server is ready
       run: sleep 5s
     - name: Test Http Request
       run: |
-        curl -f -I http://127.0.0.1:8000 || exit 1
+        curl -f -I http://127.0.0.1:80 || exit 1
 
