@@ -4,7 +4,8 @@ import websockets
 import torch
 from transformers import pipeline
 
-model_directory = os.environ["AX_MODEL_PATH"]
+model_name = os.environ["AX_MODEL_NAME"]
+model_directory = f"../models/{model_name}"
 
 generator = pipeline(
     "text-generation",
