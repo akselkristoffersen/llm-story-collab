@@ -18,8 +18,9 @@ services:
       - "8082:8080"
     environment:
       - AX_MODEL_NAME=${AX_MODEL_NAME}
+      - HF_HOME=/models
     volumes:
-      - ./models/${AX_MODEL_NAME}:/models/${AX_MODEL_NAME}
+      - ${HF_HOME}:/models
     networks:
       - webnet
 

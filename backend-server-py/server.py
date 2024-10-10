@@ -5,12 +5,11 @@ import torch
 from transformers import pipeline
 
 model_name = os.environ["AX_MODEL_NAME"]
-model_directory = f"../models/{model_name}"
 
 generator = pipeline(
     "text-generation",
-    model=model_directory,
-    tokenizer=model_directory,
+    model=model_name,
+    tokenizer=model_name,
     model_kwargs={"torch_dtype": torch.float16},
     device_map="auto"
 )
