@@ -2,22 +2,11 @@
 	import Message from './Message.svelte';
 	let message;
 	let messages = [];
-	
-			
-	let waitingrOnResponse = false;
-	function onSendMessage() {
-		if (message.length > 0) {
-		waitingrOnResponse = true;
-		messages = [...messages, message];
-		socket.send(message);
-		message = "";
-		}
-	}
-
 	let socket = undefined;
 	let socketConnecting = false;
 	let socketIsConnected = false;
-
+	let waitingrOnResponse = false;
+	
 	function connectToWebsocket() {
 		if (socketConnecting || socketIsConnected) {
 			return;
@@ -25,7 +14,10 @@
 
 		socketConnecting = true;
 		socket = new WebSocket(import.meta.env.VITE_API_URL);
-		
+		if (socket.CLOSED) {
+			socketConnecting = false;
+		}
+
 		socket.onopen = (event) => {
 			socketIsConnected = true;
 			socketConnecting = false;
@@ -48,6 +40,14 @@
 		socket.close();
 	}
 
+	function onSendMessage() {
+		if (message.length > 0) {
+			waitingrOnResponse = true;
+			messages = [...messages, message];
+			socket.send(message);
+			message = "";
+		}
+	}
 
 </script>
 
@@ -85,11 +85,13 @@
 
 <style>
 	.wrapper {
-		display: flex;
-		width: 100%;
-		height: 100%;
-		flex-direction: column;
+		width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
 		align-items: center;
-		justify-content: center;
+        overflow-y: auto;
+        overflow-x: hidden;
 	}
 </style>
