@@ -14,7 +14,13 @@ const config = {
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		paths: {
+			relative: false
+		},
+		alias: {
+			$assets: 'src/lib/assets'
+		}
 	}
 };
 
