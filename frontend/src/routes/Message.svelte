@@ -1,8 +1,18 @@
 <script>
 	export let message;
-	export let direction = "right";
+	export let author;
 </script>
 
-<p style="text-align: {direction}" >
+<span class={author}>
 	{message}
-</p>
+</span>
+
+<style>
+	.human {
+		color: black;
+	}
+	.ai {
+		color: rgb(150, 4, 4);
+	}
+</style>
+
