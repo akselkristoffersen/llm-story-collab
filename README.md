@@ -1,5 +1,8 @@
 # llm-story-collab
 
+
+![Demo image](./images/demo.jpg)
+
 This web app allows users to co-write a story with an AI language model, taking turns with the AI to build a shared narrative. Users can download their preferred language model from Hugging Face's library, and inference will be performed using the [Transformers Pipelines](https://huggingface.co/docs/transformers/v4.45.2/en/main_classes/pipelines#pipelines). 
 
 ### Technologies
@@ -18,8 +21,8 @@ This web app allows users to co-write a story with an AI language model, taking 
    ```bash
    pip install huggingface_hub
 3. Set Environment Variables
-* $HF_HOME: The directory where Hugging Face models will be stored.
-* $AX_MODEL_NAME: The name of the model on Hugging Face that you want to use.
+* $HF_HOME: The directory where Hugging Face models will be stored (needed by docker-compose).
+* $AX_MODEL_NAME: The name of the model on Hugging Face that you want to use (needed by docker-compose).
     ```bash
     export HF_HOME=/path/to/your/huggingface/models
     export AX_MODEL_NAME=huggingface-model-name
@@ -33,7 +36,3 @@ This web app allows users to co-write a story with an AI language model, taking 
     ```bash
     docker-compose up
 7. Open in Web Browser http://localhost:80
-
-
-
-![Demo image](./images/demo.jpg)
