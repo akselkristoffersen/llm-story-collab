@@ -1,5 +1,7 @@
 <script>
 	import Message from './Message.svelte';
+	import Button from './Button.svelte';
+
 	let message = "";
 	let messages = [];
 	let socket = undefined;
@@ -56,23 +58,18 @@
 <div class="connection-status">
 	<div 
 	  class="status-light"
-	  style="background-color: {socketIsConnected ? '#4CAF50' : '#969696'}"
+	  style="background-color: {socketIsConnected ? 'var(--connect-color)' : '#969696'}"
 	></div>
-	<p>{socketIsConnected ? 'Connected' : 'Disconnected'}</p>
-  </div>
+	<p style="opacity: 0.7;">{socketIsConnected ? 'Connected' : 'Disconnected'}</p>
+</div>
 
-<button 
-	class="button-connect" 
-	on:click={connectToWebsocket} 
-	hidden={socketIsConnected || socketConnecting}
-	style="background-color: #4CAF50;"
-	>
+<Button on:click={connectToWebsocket} hidden={socketIsConnected || socketConnecting} styleType="connect">
 	Connect
-</button>
+</Button>
 
 {#if socketIsConnected}
 <p class="history-field">
-	{#each messages as message, i}<Message {message} author={i % 2 == 0 ? "human" :  "ai" }/>{/each}{message}
+	{#each messages as message, i}<Message {message} author={i % 2 == 0 ? "" :  "ai"}/>{/each}{message}
 	<span class="ai-thinking" hidden={!awaitingResponse}>...AI is thinking </span>
 </p>
 <form>
@@ -87,14 +84,9 @@
 </form>
 {/if}
 
-<button 
-	class="button-connect" 
-	on:click={disconnectFromWebsocket} 
-	hidden={!(socketConnecting || socketIsConnected)}
-	style="background-color: #969696;"
-	>
+<Button on:click={disconnectFromWebsocket} hidden={!(socketConnecting || socketIsConnected)} styleType="disconnect">
 	Disconnect
-</button>
+</Button>
 
 </div>
 
@@ -111,7 +103,7 @@
 		width: 70%;
 		text-align: center;
 		margin: 50px 0px 0px 0px;
-		color: #3D52A0;
+		color: var(--title-color);
 		font-size: 40px;
 	}
 
@@ -134,8 +126,8 @@
 		min-height: 100px;
 		max-height: 40vh;
 		background-color: white;
-		border: 2px solid rgb(208, 208, 208);
-		border-radius: 4px;
+		border: 2px solid var(--border);
+		border-radius: 6px;
 		margin: 10px 0px 10px 0px;
 		padding: 10px 15px;
 		word-wrap: break-word;
@@ -156,21 +148,21 @@
 	.input-text {
 		padding: 10px;
 		font-size: 16px;
-		border: 1px solid #ccc;
+		border: 1px solid var(--border);
 		border-radius: 5px;
-		width: 200px;
+		width: 230px;
 		box-sizing: border-box;
 	}
 
 	.input-submit {
-		background-color: #4CAF50;  /* Green background */
-		color: white;               /* White text */
-		padding: 10px 15px;         /* Padding for the button */
-		font-size: 16px;            /* Font size for button text */
-		border: none;               /* Remove default border */
-		border-radius: 5px; /* Rounded corners, but only right side */
-		cursor: pointer;            /* Pointer on hover */
-		transition: background-color 0.1s ease; /* Smooth hover transition */
+		background-color: var(--connect-color);
+		color: white;
+		padding: 10px 15px;
+		font-size: 16px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color 0.1s ease;
 	}
 
 	.input-submit:hover {
@@ -180,27 +172,6 @@
 	.input-submit:disabled {
 		filter:	brightness(90%);
 		cursor: auto;    
-	}
-
-	.button-connect {
-		color: white;
-		border: none;    
-		padding: 15px 30px;
-		margin-top: 15px;
-		font-size: 18px;
-		font-weight: bold;
-		border-radius: 10px;
-		cursor: pointer;
-		transition: background-color 0.1s ease;
-	}
-
-	.button-connect:hover {
-		filter:	brightness(92%);
-	}
-
-	.button-connect:active {
-		background-color: #388E3C;
-		transform: scale(0.98);
 	}
 
 </style>

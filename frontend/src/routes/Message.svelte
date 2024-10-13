@@ -1,6 +1,6 @@
 <script>
 	export let message;
-	export let author;
+	export let author = "";
 </script>
 
 <span class={author}>
@@ -8,11 +8,9 @@
 </span>
 
 <style>
-	.human {
-		color: black;
-	}
 	.ai {
-		color: rgb(150, 4, 4);
+		font-weight: 600;
+		color: #9f2e5d;
 	}
 </style>
 
