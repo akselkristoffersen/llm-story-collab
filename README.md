@@ -33,3 +33,7 @@ This web app allows users to co-write a story with an AI language model, taking 
     ```bash
     docker-compose up
 7. Open in Web Browser http://localhost:80
+
+
+
+![Alt text](./images/demo.jpg)
