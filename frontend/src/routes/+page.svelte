@@ -53,15 +53,15 @@
 
 <div class="wrapper">
 
-<h1>Write history with AI</h1>
-
 <div class="connection-status">
 	<div 
-	  class="status-light"
-	  style="background-color: {socketIsConnected ? 'var(--connect-color)' : '#969696'}"
+		class="status-light"
+		style="background-color: {socketIsConnected ? 'var(--connect-color)' : '#969696'}"
 	></div>
-	<p style="opacity: 0.7;">{socketIsConnected ? 'Connected' : 'Disconnected'}</p>
+	<p class="status-text">{socketIsConnected ? 'Connected' : 'Disconnected'}</p>
 </div>
+
+<h1>Write history with AI</h1>
 
 <Button on:click={connectToWebsocket} hidden={socketIsConnected || socketConnecting} styleType="connect">
 	Connect
@@ -102,14 +102,16 @@
 	h1 {
 		width: 70%;
 		text-align: center;
-		margin: 50px 0px 0px 0px;
+		margin: 0px 0px 20px 0px;
 		color: var(--title-color);
 		font-size: 40px;
 	}
 
 	.connection-status {
+		width: 100%;
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
 	}
 
 	.status-light {
@@ -121,8 +123,14 @@
 		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 	}
 
+	.status-text {
+		width: 110px;
+		opacity: 0.7;
+		font-size: 14px;
+	}
+
 	.history-field {
-		width: 80%;
+		width: 90%;
 		min-height: 100px;
 		max-height: 40vh;
 		background-color: white;
