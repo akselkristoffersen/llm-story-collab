@@ -61,7 +61,7 @@
 	<p class="status-text">{socketIsConnected ? 'Connected' : 'Disconnected'}</p>
 </div>
 
-<h1>Write history with AI</h1>
+<h1>Story Collab with AI</h1>
 
 <Button on:click={connectToWebsocket} hidden={socketIsConnected || socketConnecting} styleType="connect">
 	Connect
