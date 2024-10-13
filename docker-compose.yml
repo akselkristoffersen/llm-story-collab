@@ -7,8 +7,6 @@ services:
         VITE_API_URL: ws://localhost:8082
     ports:
       - "80:80"
-    networks:
-      - webnet
 
   backend-server:
     build:
@@ -21,9 +19,3 @@ services:
       - HF_HOME=/models
     volumes:
       - ${HF_HOME}:/models
-    networks:
-      - webnet
-
-networks:
-  webnet:
-    driver: bridge
