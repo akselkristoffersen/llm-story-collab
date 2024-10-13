@@ -36,4 +36,4 @@ This web app allows users to co-write a story with an AI language model, taking 
 
 
 
-![Alt text](./images/demo.jpg)
+![Demo image](./images/demo.jpg)
