@@ -41,12 +41,10 @@
 	}
 
 	function onSendMessage() {
-		if (message.length > 0) {
-			awaitingResponse = true;
-			messages = [...messages, message];
-			socket.send(message);
-			message = "";
-		}
+		awaitingResponse = true;
+		messages = [...messages, message];
+		socket.send(message);
+		message = "";
 	}
 
 </script>
@@ -55,7 +53,20 @@
 
 <h1>Write history with AI</h1>
 
-<button class="button-connect" on:click={connectToWebsocket} hidden={socketConnecting || socketIsConnected}>
+<div class="connection-status">
+	<div 
+	  class="status-light"
+	  style="background-color: {socketIsConnected ? '#4CAF50' : '#969696'}"
+	></div>
+	<p>{socketIsConnected ? 'Connected' : 'Disconnected'}</p>
+  </div>
+
+<button 
+	class="button-connect" 
+	on:click={connectToWebsocket} 
+	hidden={socketIsConnected || socketConnecting}
+	style="background-color: #4CAF50;"
+	>
 	Connect
 </button>
 
@@ -69,14 +80,19 @@
 		type="text"
 		spellcheck="true"
 		disabled={awaitingResponse}
-		placeholder="Input text"
+		placeholder="Enter your text"
 		bind:value={message}
 	/>
-	<input type="submit" on:click={onSendMessage} disabled={awaitingResponse}/>
+	<input class="input-submit" type="submit" on:click={onSendMessage} disabled={awaitingResponse}/>
 </form>
 {/if}
 
-<button class="button-connect" on:click={disconnectFromWebsocket} hidden={!(socketConnecting || socketIsConnected)}>
+<button 
+	class="button-connect" 
+	on:click={disconnectFromWebsocket} 
+	hidden={!(socketConnecting || socketIsConnected)}
+	style="background-color: #969696;"
+	>
 	Disconnect
 </button>
 
@@ -85,51 +101,92 @@
 
 <style lang="scss">
 	.wrapper {
-		width: 100vw;
-        height: 100vh;
-        height: 100dvh;
-		max-width: 800px;
+		width: 800px;
         display: flex;
         flex-direction: column;
 		align-items: center;
-        overflow-y: auto;
-        overflow-x: hidden;
 	}
 
 	h1 {
 		width: 70%;
 		text-align: center;
+		margin: 50px 0px 0px 0px;
+		color: #3D52A0;
+		font-size: 40px;
+	}
+
+	.connection-status {
+		display: flex;
+		align-items: center;
+	}
+
+	.status-light {
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background-color: red;
+		margin-right: 10px;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 	}
 
 	.history-field {
 		width: 80%;
 		min-height: 100px;
+		max-height: 40vh;
 		background-color: white;
 		border: 2px solid rgb(208, 208, 208);
 		border-radius: 4px;
-		padding: 4px 7px;
+		margin: 10px 0px 10px 0px;
+		padding: 10px 15px;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 		word-break: break-word;
 		white-space: normal;
+		overflow-y: scroll;
 	}
 
 	.ai-thinking {
 		color: lightgray;
 	}
 
+	form {
+		margin: 10px 0px 15px 0px;
+	}
+
 	.input-text {
-		border: 1px solid rgb(174, 174, 174);
-		padding: 4px 7px;
-		border-radius: 4px;
-		margin: 8px 4px;
+		padding: 10px;
+		font-size: 16px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		width: 200px;
+		box-sizing: border-box;
+	}
+
+	.input-submit {
+		background-color: #4CAF50;  /* Green background */
+		color: white;               /* White text */
+		padding: 10px 15px;         /* Padding for the button */
+		font-size: 16px;            /* Font size for button text */
+		border: none;               /* Remove default border */
+		border-radius: 5px; /* Rounded corners, but only right side */
+		cursor: pointer;            /* Pointer on hover */
+		transition: background-color 0.1s ease; /* Smooth hover transition */
+	}
+
+	.input-submit:hover {
+		filter:	brightness(90%);
+	}
+
+	.input-submit:disabled {
+		filter:	brightness(90%);
+		cursor: auto;    
 	}
 
 	.button-connect {
-		background-color: #4CAF50;
 		color: white;
 		border: none;    
 		padding: 15px 30px;
+		margin-top: 15px;
 		font-size: 18px;
 		font-weight: bold;
 		border-radius: 10px;
@@ -138,11 +195,12 @@
 	}
 
 	.button-connect:hover {
-		background-color: #45a049;
+		filter:	brightness(92%);
 	}
 
 	.button-connect:active {
 		background-color: #388E3C;
 		transform: scale(0.98);
 	}
+
 </style>

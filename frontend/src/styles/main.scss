@@ -1,39 +1,24 @@
-// @import "@fontsource/inter/300.css";
-// @import "@fontsource/inter/400.css";
-// @import "@fontsource/inter/500.css";
-// @import "@fontsource/inter/600.css";
-// @import "@fontsource/inter/700.css";
-// @import "@fontsource/inter/800.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/800.css";
 
 :root {
     --bg-color: #EDE8F5;
-
-    // --bg-color-dark: #000e1e;
-    // --semi-dark-color: #1e2c57;
-    // --normal-color: #152f60;
-    // --semi-light-color: #85929f;
-    // --light-color: #95a5b6;
-    // --tech-color: #c8d8ec;
-    // --text-color: #D3D9D6;
 }
 
 html,
 body {
     background-color: var(--bg-color);
-    //color: aquamarine;
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
-    // font-family: "inter", sans-serif;
-    // background-color: blue;
-    // background-color: var(--bg-color);
-    // color: var(--text-color);
-    // line-height: 1.35;
-    // font-weight: 400;
+    font-family: "inter", sans-serif;
+    line-height: 1.3;
 }
 
-h1 {
-    color: #3D52A0;
-}
 
