@@ -18,7 +18,7 @@
 		padding: 15px 30px;
 		margin-top: 15px;
 		font-size: 18px;
-		font-weight: bold;
+		font-weight: 600;
 		border-radius: 9px;
 		cursor: pointer;
 		transition: background-color 0.1s ease;

@@ -126,7 +126,6 @@
 		min-height: 100px;
 		max-height: 40vh;
 		background-color: white;
-		border: 2px solid var(--border);
 		border-radius: 6px;
 		margin: 10px 0px 10px 0px;
 		padding: 10px 15px;
@@ -148,7 +147,7 @@
 	.input-text {
 		padding: 10px;
 		font-size: 16px;
-		border: 1px solid var(--border);
+		border: none;
 		border-radius: 5px;
 		width: 230px;
 		box-sizing: border-box;
