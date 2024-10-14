@@ -19,10 +19,10 @@ This web app allows users to co-write a story with an AI language model, taking 
    cd llm-story-collab
 2. Install huggingface_hub
    ```bash
-   pip install huggingface_hub
+   pip install -U huggingface_hub
 3. Set Environment Variables
-* $HF_HOME: The directory where Hugging Face models will be stored (needed by docker-compose).
-* $AX_MODEL_NAME: The name of the model on Hugging Face that you want to use (needed by docker-compose).
+* ```$HF_HOME```: The directory where Hugging Face models will be stored (also needed by docker-compose).
+* ```$AX_MODEL_NAME```: The name of the model on Hugging Face that you want to use (also needed by docker-compose).
     ```bash
     export HF_HOME=/path/to/your/huggingface/models
     export AX_MODEL_NAME=huggingface-model-name
