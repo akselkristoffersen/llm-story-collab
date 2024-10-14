@@ -7,7 +7,7 @@ This web app allows users to co-write a story with an AI language model, taking 
 
 ### Technologies
 - **Frontend**: Svelte (for building and serving the single-page app), JavaScript, SCSS, and HTML
-- **Backend**: Python (for writing a WebSocket server)
+- **Backend**: Python (for writing a WebSocket server hosting the LLM)
 - **Containerization**: Docker (for packaging and deploying the application)
 
 ## Installation
@@ -21,8 +21,8 @@ This web app allows users to co-write a story with an AI language model, taking 
    ```bash
    pip install -U huggingface_hub
 3. Set Environment Variables
-* ```$HF_HOME```: The directory where Hugging Face models will be stored (also needed by docker-compose).
-* ```$AX_MODEL_NAME```: The name of the model on Hugging Face that you want to use (also needed by docker-compose).
+* ```$HF_HOME```: The directory where the Hugging Face models will be downloaded/stored. Docker Compose will also create volumes to this directory.  
+* ```$AX_MODEL_NAME```: The name of the model on Hugging Face that you want to use. The envir is forwarded by Docker Compose to the backend container.
     ```bash
     export HF_HOME=/path/to/your/huggingface/models
     export AX_MODEL_NAME=huggingface-model-name
