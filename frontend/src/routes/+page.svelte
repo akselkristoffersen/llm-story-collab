@@ -56,7 +56,7 @@
 <div class="connection-status">
 	<div 
 		class="status-light"
-		style="background-color: {socketIsConnected ? 'var(--connect-color)' : '#969696'}"
+		style="background-color: {socketIsConnected ? 'var(--connect-color)' : 'var(--disconnect-color)'}"
 	></div>
 	<p class="status-text">{socketIsConnected ? 'Connected' : 'Disconnected'}</p>
 </div>
@@ -133,7 +133,7 @@
 		width: 90%;
 		min-height: 100px;
 		max-height: 40vh;
-		background-color: white;
+		background-color: var(--story-field-color);
 		border-radius: 6px;
 		margin: 10px 0px 10px 0px;
 		padding: 10px 15px;
@@ -163,7 +163,7 @@
 
 	.input-submit {
 		background-color: var(--connect-color);
-		color: white;
+		color: var(--story-field-color);
 		padding: 10px 15px;
 		font-size: 16px;
 		border: none;

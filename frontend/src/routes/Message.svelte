@@ -10,7 +10,7 @@
 <style>
 	.ai {
 		font-weight: 600;
-		color: #9f2e5d;
+		color: var(--ai-text-color);
 	}
 </style>
 

@@ -13,7 +13,7 @@
 
 <style lang="scss">
     .button {
-        color: var(--bright-text);
+        color: var(--bright-text-color);
 		border: none;
 		padding: 15px 30px;
 		margin-top: 15px;
@@ -29,7 +29,7 @@
     }
 
     .disconnect {
-        background-color: #7d808b;
+        background-color: var(--disconnect-color);
     }
 
     .button:hover {
